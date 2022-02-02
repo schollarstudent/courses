@@ -36,7 +36,14 @@ module.exports.renderEditForm = async function(req, res){
 //edit
 
 //delete
-
+module.exports.deleteStudent=async function(req,res) {
+    await Student.destroy({
+        where: {
+            id: req.params.id
+        }
+    });
+    res.redirect('/courses');
+}
 //update
 module.exports.updateStudent= async function(req,res){
     const student = await Student.update({
