@@ -74,3 +74,24 @@ function studentHasCourse(student, course){
     }
     return false
 }
+
+//Add course to student
+module.exports.enrollStudent=async function(req,res){
+
+    await StudentCourses.create({
+        student_id:req.params.student_Id,
+        course_id:req.body.course
+    })
+    res.redirect(`/students/profile/${req.params.studentId}`);
+}
+
+//delete course from student
+module.exports.removeCourse=async function (req,res){
+    await StudentCourse.destroy({
+        where:{
+            student_id:req.params.studentId,
+            course_id:req.params.courseId
+        }
+    });
+    res.redirect(`/students/profile/${req.params.studentId}`)
+}
