@@ -9,11 +9,14 @@ block content
         p Grade Level: #{student.grade_level}
 
     h4 Student Courses
+    if availableCourse.legnth>0
     form(actions=`/students/${student.id}/enroll/` methods='post')
         select(name='course' id='course' autocomplete=off)
             each course in availableCourses
                 option(value=course.id) #{course.name}
-        button.button(type='submit') Enroll
+        button.button.primary(type='submit') Enroll
+    else
+        p No remaning courses are available to enroll in.
     table
         thead
             tr
