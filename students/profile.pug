@@ -17,6 +17,8 @@ block content
         button.button.primary(type='submit') Enroll
     else
         p No remaning courses are available to enroll in.
+    h4 enrolled courses
+    if student.course.length>0
     table
         thead
             tr
